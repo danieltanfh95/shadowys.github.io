@@ -5,4 +5,7 @@ template.html
 <!--##-->
 
 :pages:
-index.md
+md/index.md
+md/postind.md
+md/Summer Cleaning.md
+md/Summer-Cleaning-Again.md

@@ -16,3 +16,5 @@ Working on a game has been a fun experience for me, I mean, I never knew just wr
 ###Subtle svbtle
 
 I like blogger in that it is complete...ly not suited for posting code. Markdown is the way to go, since posting a lot of CSS/JS code repetitively is not the way I want it. Svbtle provides using markdown to write stuff. Though, that's it. Just writing stuff, no way for users to provide feedback, nothing. That said, I might use this place as a mini blog. :D
+
+[Posts List](postind.html)

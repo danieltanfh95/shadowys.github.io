@@ -1,3 +1,13 @@
+"""
+Author: Shadowys
+Date: 12/6/2014
+Description:
+Auto markdown pusher. Uses a text file for configuration and batch processing.
+:template: is the filepath of the template html
+:parsekey: is the point to be replaced by the markdown content
+:pages:    is filepath the markdown pages to be converted
+"""
+
 import markdown
 import codecs
 import sys
@@ -6,8 +16,8 @@ def parser(filepath):
     """Parses the config file given"""
     try:
         with open(filepath, "r") as f:
-            data=''.join(f).split(":")
-            data=[line for line in data if line and line.strip()[0]!=";"]
+            data=''.join([line for line in list(f) if (line and line[0]!=";")]).split(":")
+            data=[line for line in data if line]
             data={data[i]:data[i+1] for i in range(0,len(data),2)}
             for k,v in data.items():
                 data[k]=[ele for ele in v.split("\n") if ele]
@@ -25,7 +35,7 @@ def templateloader(filepath):
     try:
         with open(filepath,'r') as f:
             template=f.read()
-            print("template.html found. Templated site is rolled out.")
+            print("template.html found. Templated site is used.")
     except IOError:
         print("Error : %s"%(e))
         print(">File %s not found in same folder as script."%(filepath))
@@ -47,6 +57,7 @@ def mdreader(filepath):
 
 def synthesis(filename,html,template, parsekey):
     """Merge markdown converted file with template"""
+    filename=filename.split("/")[-1]
     htmlpath="".join(filename.split(".")[:-1]+[".html"])
     try:
         with codecs.open(htmlpath, 'w', encoding="utf-8") as f:

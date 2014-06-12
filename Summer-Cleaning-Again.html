@@ -37,17 +37,15 @@
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
-          <h2>Making miracles come true near you.</h2>
-<h3>A Pinch of Salt and Pepper</h3>
-<p>Most of my work is done in <a href="https://www.python.org/">Python</a>, but recently I have started writing in <a href="http://dlang.org/">D</a> for speed of execution, like parsing a html file to find dates for a program patch, or writing a program that calls <a href="http://www.7-zip.org/">7z</a> to zip files. In <a href="http://unity3d.com/">Unity3D</a>, my scripts are bilingual, in <a href="http://msdn.microsoft.com/en-us/library/67ef8sbd.aspx">C Sharp</a> and <a href="http://boo.codehaus.org/">Boo</a>. I like programming in <a href="http://clojure.org/">Clojure</a> for the fun and challenge it brings.</p>
-<h3>Hot Sparks Fly</h3>
-<p>Currently I'm working on the <a href="https://github.com/Shadowys/Blitz">Blitz repo</a> which hosts the script sources for the <a href="http://shadowys.github.io/Zoids-MMORPG">Zoid-MMORPG</a>. 
-Working on a game has been a fun experience for me, I mean, I never knew just writing and marketing a game would get me to know .NET, C#, Boo, HTML/CSS/JS, a dash of Python and D here and there. So, yeah, it's been awesome. </p>
-<p><strong>Zoids MMORPG</strong></p>
-<p><a href="https://zoidsmmorpg.freeforums.org" title="Forums"><img alt="Forums" src="images/icon.mmorpg.png" /></a> <a href="https://github.com/Shadowys/Blitz" title="Development repository"><img alt="Dev repo" src="images/icon.logo.png" /></a> <a href="http://shadowys.github.io/Zoids-MMORPG" title="Website"><img alt="Site" src="images/icon.ortho.png" /></a></p>
-<h3>Subtle svbtle</h3>
-<p>I like blogger in that it is complete...ly not suited for posting code. Markdown is the way to go, since posting a lot of CSS/JS code repetitively is not the way I want it. Svbtle provides using markdown to write stuff. Though, that's it. Just writing stuff, no way for users to provide feedback, nothing. That said, I might use this place as a mini blog. :D</p>
-<p><a href="postind.html">Posts List</a></p>
+          <p>Posted on 10th June 2014</p>
+<p>June 16th. The day of reckoning. We're going to launch a community alpha release on that day, so everything should be as prim and proper before we step out to the world and say, "Here's the game!".</p>
+<p>And that includes the dev base, which also includes the codebase. Just a week before, we've got Lee, who is an <a href="https://www.kickstarter.com/projects/quickfix/magic-meisters-a-co-op-magical-action-rpg-for-pc-m">indie Unity3d dev</a>, with plenty of experience come and help out. While he haven't contributed code yet, he has already provided valuable experience into improving the game. :D</p>
+<p>After some back and forth, I was finally convinced to port the entire codebase from Boo to Csharp, for two reasons in particular, NGUI, the future of Unity GUI (may change in Unity 4.6 though) and the main inclination of the community of Unity3d development. I still have misgivings about C sharp as a language (LINQ, and compiler type inference, in particular, as I have to use them in place of comprehensions and duck typing.), though it is relatively simple to port the code from Boo to C sharp. </p>
+<p>Just add tons of compiler needed braces and semicolons and typings (var can't be used outside its scope.) and casts ( no idea why don't generics do generic stuff...why does GetComponent(typeof(fooclass)) still needs to be casted is beyond me, but a <a href="http://answers.unity3d.com/questions/358992/c-getcomponent-result-error-cast.html">quick google</a> shows C sharp generics are more closer to Java than to C++/D generics, so there goes the execution penalty without casting...) and you're mostly done! That said, the editor is much optimised for Csharp (helpful completions here and there once everything is typed.) than Boo (not that I needed it when coding in Boo anyway...) so everything is quite easy once the workflow settles in.</p>
+<p>Now that I'm using full fledged C sharp (not minding the generics yet, oh my how I enjoy the D templates), I hope the unity community are much inclined to develop the game, even at the (I hope) minor cost of readability and extraneous syntax for the parser...</p>
+<p>We've already got Lee and Kam, another enthusiastic fellow who shows great commitment and has contributed his first code :D , a spinner for the WIP sign. </p>
+<p>Well, apart from all that coding stuff, I cleared the unused asset resources, and while it was apparent that there were still many texture and sounds, the compilation time has already decreased from a minute to 10 seconds (changing from Boo to C sharp sped it up a little before, but this is amazing)</p>
+<p>Cheers! Hopefully it will well received by the community. </p>
       </section>
 
     </div>
