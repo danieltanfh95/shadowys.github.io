@@ -2,16 +2,16 @@
 
 ----------------
 
-####Home
+###Home
 
 [Home Page](index.html)
 
-#####Subtle Svbtle
+####Subtle Svbtle
 
-2014-05-14 [Summer Cleaning ](Summer Cleaning.html)
+2014-05-14 [Summer Cleaning ](Summer-Cleaning.html)
 
 2014-06-10 [Summer Cleaning Again](Summer-Cleaning-Again.html)
 
-#####Github Origami
+####Github Origami
 
-2014-06-13 [Release v0.1](Release v0.1.html)
+2014-06-13 [Release v0.1](Release-v0-1.html)
