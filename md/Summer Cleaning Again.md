@@ -1,3 +1,7 @@
+-title:p
+Summer Cleaning Again
+
+-body
 Posted on 10th June 2014
 
 June 16th. The day of reckoning. We're going to launch a community alpha release on that day, so everything should be as prim and proper before we step out to the world and say, "Here's the game!".

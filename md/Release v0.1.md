@@ -1,3 +1,7 @@
+-title:p
+Release v0.1
+
+-body
 Posted on 13th June 2014
 
 The alpha-alpha-alpha version has been [released](http://shadowys.github.io/Zoids-MMORPG/downloads.html)! I'm so excited, even though I'm feeling pessimistic at the same time. While the game has most of the functions written out, we're low on models, textures and sounds, so the overall game-play experience might not be on par on what most people would expect. 

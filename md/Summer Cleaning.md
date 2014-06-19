@@ -1,3 +1,7 @@
+-title:p
+Summer Cleaning
+
+-body
 Posted on 15th May 2014
 
 It's time for cleaning out messy hacks! When I write code sometimes I just had to get the job done first, then clean up, resulting in all the WTFs you can see in [this place](https://github.com/Shadowys/Blitz/tree/master/Assets/BOO/Legacy), prompting the rewrite of the entire code base. Of course, the current rewrite is not perfect and there are still horribly mangled code hiding among the current code, such as [the timer](http://shadowys.svbtle.com/tick-tock), and non-commented code, and a misplaced equals sign in Bullet Handle, which caused the weapon pointer not to cycle correctly, so some cleaning is still needed.

@@ -1,3 +1,7 @@
+-title:p
+Post index
+
+-body
 #Post Index
 
 ----------------

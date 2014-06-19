@@ -1,13 +1,11 @@
-:template:
+-template
 template.html
 
-:parsekey:
-<!--##-->
-
-:pages:
+-pages
 md/index.md
 md/postind.md
-md/Summer-Cleaning.md
-md/Summer-Cleaning-Again.md
-md/Release-v0-1.md
+md/Summer Cleaning.md
+md/Summer Cleaning Again.md
+md/Release v0.1.md
 md/background.md
+md/neo.md
