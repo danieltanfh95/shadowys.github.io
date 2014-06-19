@@ -15,9 +15,9 @@ def parser(filepath, key="body"):
             for line in f :
                 if line.strip("- \n") and line[0]=="-":
                     line=line.strip("- \n").split(":") #former is the key, latter is unwanted tag
-                    data[line[0].strip()]=[[]]
-                    cur=line[0].strip()
-                    if len(line)>1 : data[line[0].strip()].append(line[1].strip())
+                    data[line[0]]=[[]]
+                    cur=line[0]
+                    if len(line)>1 : data[line[0]].append(line[1].strip())
                 elif line[0]!=":" and line[0]!=";":
                     # ; at the start of the line for lines to ignore
                     if not cur :
