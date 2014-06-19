@@ -48,7 +48,7 @@ def mdreader(filepath):
     try:
         with codecs.open(filepath, mode='r', encoding="utf-8") as f:
             text=f.read()
-            html=markdown.markdown(text)
+            html=markdown.markdown(text, extensions=["fenced_code"])
             print(">File %s converted to html"%(filepath))
     except IOError as e:
         print("Error : %s"%(e))
