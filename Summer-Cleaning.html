@@ -23,7 +23,7 @@
           <li class="fork"><a href="https://github.com/Shadowys">View On GitHub</a></li>
           <li class="fork"><a href="index.html">Home Page</a></li>
           <li class="fork"><a href="postind.html">Post List</a></li>
-          <!--#header#-->
+          
         </nav>
       </div><!-- end header -->
 
@@ -39,11 +39,47 @@
         </div>
 
           <p>Posted on 15th May 2014</p>
-<p>It's time for cleaning out messy hacks! When I write code sometimes I just had to get the job done first, then clean up, resulting in all the WTFs you can see in <a href="https://github.com/Shadowys/Blitz/tree/master/Assets/BOO/Legacy">this place</a>, prompting the rewrite of the entire code base. Of course, the current rewrite is not perfect and there are still horribly mangled code hiding among the current code, such as <a href="http://shadowys.svbtle.com/tick-tock">the timer</a>, and non-commented code, and a misplaced equals sign in Bullet Handle, which caused the weapon pointer not to cycle correctly, so some cleaning is still needed.
-I've also uploaded all the <a href="https://github.com/Shadowys/Blitz/tree/master/Assets/Models">models</a> so any graphic developer can upload their models into the repository. 
-Unfortunately though, I have not completed the rewrite of the GUI components so the current build will only have a rudimentary movements, shooting ability and bird eye's view. 
+<p>It's time for cleaning out messy hacks! When I write code sometimes I just had to get the job done first, then clean up, resulting in all the WTFs you can see in <a href="https://github.com/Shadowys/Blitz/tree/master/Assets/BOO/Legacy">this place</a>, prompting the rewrite of the entire code base. Of course, the current rewrite is not perfect and there are still horribly mangled code hiding among the current code, such as <a href="http://shadowys.svbtle.com/tick-tock">the timer</a>, and non-commented code, and a misplaced equals sign in Bullet Handle, which caused the weapon pointer not to cycle correctly, so some cleaning is still needed.<br />
+I've also uploaded all the <a href="https://github.com/Shadowys/Blitz/tree/master/Assets/Models">models</a> so any graphic developer can upload their models into the repository. <br />
+Unfortunately though, I have not completed the rewrite of the GUI components so the current build will only have a rudimentary movements, shooting ability and bird eye's view. <br />
 With a departure from previous concepts, we have new code:</p>
-<h2>Zoid (with it's components that should be initialised)</h2>
+<h2 id="zoid-with-its-components-that-should-be-initialised">Zoid (with it's components that should be initialised)</h2>
+<ul>
+<li><strong>Transform</strong>: Initial rotation is 0,0,0</li>
+<li><strong>Animation</strong>: Default animation is <em>idle, run, walk, jump, quickstepL, quickstepR</em></li>
+<li><strong>Rigidbody</strong>: Default <em>mass</em> is 35. <em>Use Gravity</em> flagged true. <em>Rotation</em> is frozen across three axes.</li>
+<li><strong>Motion_Mech</strong>: Script to move zoid.</li>
+<li><strong>Status_Mech</strong>: Used with individual <em>colliders</em> in each machine parts and their respective "<em>Parts_Mech</em>" script components.</li>
+<li><strong>Weapon_Handle</strong>: Used with individual <em>weapons</em> as children in the zoid body, with their respective "<em>Bullet_Handle</em>" script components, which in turn handles bullets with "<em>Bullet_Mech</em>" script components</li>
+</ul>
+<h2 id="main-created-from-empty-gameobject">Main (created from Empty GameObject)</h2>
+<ul>
+<li><strong>Player View</strong>: <em>target</em> is set to the one with "player" tag.</li>
+<li><strong>Sound Handle</strong>: Used with "Sound_Mech" script component on Speaker prefab to play multiple sounds.</li>
+<li><strong>Main_Mech</strong>: Script to strip multiple instances of main to one.</li>
+</ul>
+<h2 id="maincamera-default-main-camera">MainCamera (default main camera)</h2>
+<ul>
+<li><strong>Camera_Handle</strong>: Handles states of camera follow.</li>
+<li><strong>Follow_Mech</strong>: Simple follow script.</li>
+<li><strong>Bird_Mech</strong>: Enable 360 degree view of the map when camera rotates around zoid.</li>
+</ul>
+<p>Currently I have made a machine gun and a missile launcher for testing purposes, and the next agenda on my list is the GUI for showing weapon activated. </p>
+<h2 id="weapon-created-from-empty-gameobject">Weapon (created from empty GameObject)</h2>
+<ul>
+<li><strong>Transform</strong>: Initial local rotation can be 0,0,0</li>
+<li><strong>Weapon_Mech</strong>: Holds the weapon state, for differentiating the weapon from the body, and the texture for the weapon thumbnail.</li>
+<li><strong>Bullet_Handle</strong>: Handles the actual shooting of the bullet.</li>
+</ul>
+<h2 id="bullet-any-gameobject-with-a-collider">Bullet (any GameObject with a collider)</h2>
+<ul>
+<li><strong>Rigidbody</strong></li>
+<li><strong>Trail Renderer</strong></li>
+<li><strong>AudioSource</strong>: Place gunshot sound in here, to be played when the bullet in alive.</li>
+<li><strong>Bullet_Mech</strong>: Script to process bullet movements, damage dealing, and explosion on impact sounds.</li>
+</ul>
+<p>A6yog has informed me that there will be a new coder in our team (Harris Piech), while I've not communicated with him, I'm a little excited at having someone else to help.</p>
+<p>Godspeed us all.</p>
       </section>
 
     </div>
@@ -77,6 +113,6 @@ With a departure from previous concepts, we have new code:</p>
     
   </body>
   <div id="footer">
-    <!--#footer#-->
+    
   </div>
 </html>
