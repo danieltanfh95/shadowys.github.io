@@ -9,7 +9,7 @@ header{
 
 body {
   padding:50px;
-  font:15px/1.6 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:15px/1.6 Lato, "Helvetica Neue",  'Hiragino Kaku Gothic Pro', 'Meiryo', Helvetica, Arial, sans-serif;
   color:#777;
   font-weight:300;
 }
@@ -184,6 +184,7 @@ hr {
 }
 
 footer {
+  width:270px;
   float:left;
   position:fixed;
   bottom:50px;
