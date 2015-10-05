@@ -13,9 +13,10 @@ else:
 
 def serve(port=8000,url=None):
    if url==None: url="http://localhost:%s"%port
+   print(url)
    try:
       #Check if the local server already exists.
-      exist=urlopen(url)
+      exist=urlopen(url, timeout=10)
       print("The port, %s is already open for %s"%(port,url))
       input("Press enter to exit.")
    except URLError:
@@ -25,9 +26,7 @@ def serve(port=8000,url=None):
       print("server running on port %s" % server_address[1])
       serverthread=Thread(target=httpd.serve_forever)
       serverthread.start()
-      webbrowser.open(url,new=2)
+      webbrowser.open(url,new=0)
 
 if __name__=="__main__":
-   data=input("\nContinue to view webpage on the localhost?\nType y for yes.[y]>>>")
-   if data.upper()=="Y":
-      serve()
+   serve()
