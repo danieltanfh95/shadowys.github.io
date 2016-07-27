@@ -1,0 +1,39 @@
+body {
+  background-image: url('back.jpg');
+  background-size: cover;
+}
+#title {
+  font-family: Georgia, serif;
+  color:white;
+  text-align: center;
+  padding-top: 50px;
+}
+
+#title-description {
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 1.2em;
+}
+
+#choice-container {
+  padding:10px;
+}
+#choice-container div{
+  padding:10px;
+}
+
+.modal {
+  min-height: 100%;
+  top: 0%;
+}
+
+.modal.modal-fixed-footer .modal-content {
+  overflow-y: hidden;
+  padding: 0px;
+}
+
+iframe {
+  position: absolute;
+  top: -130px;
+  height: 150%;
+}

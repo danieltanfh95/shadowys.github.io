@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>WTWT S2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51875230-Y']);
+    _gaq.push(['_trackPageview']);
+    (function()
+    {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" id="title">
+        <h1>WTWT Tournament Season 2</h1>
+      </div>
+      <div class="row" id="title-description">
+        <div class="col s6" >
+          <p>
+            It's time for the second iteration of the WTWT tournament! We will be holding this event if we have <b><i>more than 3 teams attending </i></b>! All details are subject to changes.
+          </p>
+          <p>
+            Registration ends at 25 August 2016
+          </p>
+          <p>
+            Date : 27-28 August 2016
+          </p>
+          <p>
+            Time : Possibly taking up the whole day
+          </p>
+          <p>
+            Venue : The Hive / NS TR
+          </p>
+          <p>
+            Mode : 5 v 5 Captain's Mode
+          </p>
+        </div>
+        <div class="col s6" id="choice-container" >
+          <div>
+            <a class="waves-effect waves-light btn-large modal-trigger" href="#modal1">
+              Completed 5-man team sign up
+            </a>
+          </div>
+          <div>
+            <a class="waves-effect waves-light btn-large modal-trigger" href="#modal2">
+              Solo/Duo/Trio/Quadro sign up
+            </a>
+          </div>
+          <div>
+            <a class="waves-effect waves-light btn-large modal-trigger" href="#modal3">
+              Miscellaneous Helper Sign Up
+            </a>
+          </div>
+          <div>
+            <a class="waves-effect waves-light btn-large modal-trigger" href="#modal4">
+              Do you know any MSA players?
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal1" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScv-xG-5Ro5kVsfSgj3mdDepWMUXjL3xxWMttPrfyahTrn_Qw/viewform?embedded=true" width="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+      </div>
+    </div>
+    <div id="modal2" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdF-G-blaBwBr8ukT0NsO8_3YbS7WsLsrA8rNjz7C2iLYB6LA/viewform?embedded=true" width="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+      </div>
+    </div>
+    <div id="modal3" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfb_4M9m58xjnH6FNAeBLgESDPw-8ST4obAmqxF6Wo8WTYASQ/viewform?embedded=true" width="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+      </div>
+    </div>
+    <div id="modal4" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScVXFpJDfYWZXV2f98ojcDwOPc67ZAn6woLrkETS5eWhbyjzA/viewform?embedded=true" width="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+      </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>    
+    <script type="text/javascript">
+    function autorun()
+    {
+      $(document).ready(function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal({
+          starting_top: '0%', // Starting top style attribute
+          ending_top: '0%', // Ending top style attribute
+        });
+      });
+    }
+    if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
+    else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
+    else window.onload = autorun;
+    </script>
+  </body>
+</html>
