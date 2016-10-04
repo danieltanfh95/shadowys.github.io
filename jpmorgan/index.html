@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+  opacity: 0.10;
+}
+
+.link.active {
+  opacity: 1.0;
+}
+
+
+.node circle {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+</style>
+<body>
+  <div>
+    <form>
+      From:
+      <input type="text" name="from" value="EE" id="from">
+      To:
+      <input type="text" name="to" value="AT" id="to">
+
+      Amount:
+      <input type="text" name="amount" value="200" id="amount">
+      <input type="submit" value="Submit" id="submit">
+    </form>
+  </div>
+  <div id="results"></div>
+<script   src="http://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+
+
+function efficient_route(links,data){
+  //First we construct paths
+  var paths=[];
+  console.log(links);
+  var initial=links.filter(function(val) {
+    return val.source==data.from;
+  }).map(function(val){
+    return {
+      path:[val.source,val.target],
+      total_cost:val.cost,
+      min_value:val.value,
+      path_list:[[val.source,val.target]]
+    }
+  });
+  paths=initial;
+  while(true){
+    var _=[];
+    for(i in paths){
+      var _p = paths[i];
+      if(_p.path[_p.path.length-1]!=data.to){
+        var cont=links.filter(function(val){
+          return val.source==_p.path[_p.path.length-1];
+        })
+        for(j in cont){
+          _c=cont[j];
+          _.push({
+            path:_p.path.concat([_c.target]),
+            total_cost:parseInt(_p.total_cost)+parseInt(_c.cost),
+            min_value:Math.min(_p.min_value,_c.value)
+          })
+        }
+      }else{
+        _.push(_p);
+      }
+    }
+    paths=_;
+    var unresolved_paths=paths.filter(function(val){
+      return val.path[val.path.length-1]!=data.to
+    });
+    if(unresolved_paths.length==0){
+      break
+    }
+  }
+  //Then we sort it based on the required 
+  paths.sort(function(a,b){
+    return a.total_cost-b.total_cost;
+  })
+  var _v=data.amount;
+  var _r=[];
+  for(i in paths){
+    var _p=paths[i];
+    _v=_v-_p.min_value;
+    if(_v>=0){
+      _r.push({path:_p.path,cost:Math.round(_p.total_cost/100*_p.min_value,2)});
+    }else{
+      _r.push({path:_p.path,cost:Math.round(_p.total_cost/100*(_p.min_value-_v),2)});
+      break;
+    }
+  }
+  return(_r);
+}
+function render(){
+  d3.csv("inputb.csv",function(links){
+    $("#results").html("");
+    var data={
+      from: $("#from").val(),
+      to: $("#to").val(),
+      amount: $("#amount").val()
+    }
+    var _r=efficient_route(links,data);
+    var html="";
+    for(i in _r){
+      html+="<p>Cost Efficient Path "+parseInt(i+1)+": "+_r[i].path.join(",")+" ; Cost: $"+Math.round(_r[i].cost)+"</p>";
+    }
+    $("#results").html(html);
+    var nodes = {};
+    // Compute the distinct nodes from the links.
+    links.forEach(function(link) {
+      for(i in _r){
+        _i=_r[i].path.indexOf(link.source);
+        console.log(link);
+        if(_i!=-1 && _r[i].path[_i+1]==link.target){
+          link.type = "active";
+        }
+      }
+      link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
+      link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+    });
+
+    var width = 600,
+        height = 600;
+
+    var force = d3.layout.force()
+        .nodes(d3.values(nodes))
+        .links(links)
+        .size([width, height])
+        .linkDistance(60)
+        .charge(-300)
+        .on("tick", tick)
+        .start();
+
+    var svg = d3.select("#results").append("svg")
+        .attr("viewBox", "100 100 400 400")
+        .attr("width", width)
+        .attr("height", height);
+
+    var link = svg.selectAll(".link")
+        .data(force.links())
+        .enter().append("line")
+        .attr("class", function(d) { return "link " + d.type; });
+
+    var node = svg.selectAll(".node")
+        .data(force.nodes())
+        .enter().append("g")
+        .attr("class", "node")
+        .on("mouseover", mouseover)
+        .on("mouseout", mouseout)
+        .call(force.drag);
+
+    node.append("circle")
+        .attr("r", 8);
+
+    node.append("text")
+        .attr("x", 12)
+        .attr("dy", ".35em")
+        .text(function(d) { return d.name; });
+
+    function tick() {
+      link
+          .attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
+
+      node
+          .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+    }
+
+    function mouseover() {
+      d3.select(this).select("circle").transition()
+          .duration(750)
+          .attr("r", 16);
+    }
+
+    function mouseout() {
+      d3.select(this).select("circle").transition()
+          .duration(750)
+          .attr("r", 8);
+    }
+  })
+}
+render();
+$("#submit").click(function(e) {
+  e.preventDefault()
+  render();
+});
+
+
+</script>
+</body>
+</html>

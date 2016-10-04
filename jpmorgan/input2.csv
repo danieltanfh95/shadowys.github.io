@@ -1,0 +1,11 @@
+source,target,value,cost
+SG,CN,200,3
+SG,AU,120,4
+AU,JP,90,2
+CN,JP,50,2
+AU,ID,80,1
+CN,ID,100,3
+ID,HK,130,4
+JP,HK,60,5
+JP,MY,80,1
+MY,HK,80,2
