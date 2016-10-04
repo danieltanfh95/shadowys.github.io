@@ -50,7 +50,6 @@ text {
 function efficient_route(links,data){
   //First we construct paths
   var paths=[];
-  console.log(links);
   var initial=links.filter(function(val) {
     return val.source==data.from;
   }).map(function(val){
@@ -127,7 +126,6 @@ function render(){
     links.forEach(function(link) {
       for(i in _r){
         _i=_r[i].path.indexOf(link.source);
-        console.log(link);
         if(_i!=-1 && _r[i].path[_i+1]==link.target){
           link.type = "active";
         }
@@ -155,8 +153,22 @@ function render(){
 
     var link = svg.selectAll(".link")
         .data(force.links())
-        .enter().append("line")
-        .attr("class", function(d) { return "link " + d.type; });
+        .enter()
+        .append("g")
+        .attr("class", "link-group")
+        .append("line")
+        .attr("class", function(d) { return "link " + d.type; })
+
+    var linkText = svg.selectAll(".link-group")
+      .append("text")
+      .data(force.links())
+      .text(function(d) { return "$"+d.value +" / "+d.cost+"%" ;})
+      .attr("opacity",function(d) { return d.type ? 1.0 : 0.15;})
+      .attr("x", function(d) { return (d.source.x + (d.target.x - d.source.x) * 0.5); })
+      .attr("y", function(d) { return (d.source.y + (d.target.y - d.source.y) * 0.5); })
+      .attr("dy", "-0.55em")
+      .attr("dx", "-0.55em")
+      .attr("text-anchor", "middle");
 
     var node = svg.selectAll(".node")
         .data(force.nodes())
@@ -183,6 +195,10 @@ function render(){
 
       node
           .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+       linkText
+          .attr("x", function(d) { return (d.source.x + (d.target.x - d.source.x) * 0.5); })
+          .attr("y", function(d) { return (d.source.y + (d.target.y - d.source.y) * 0.5); });
     }
 
     function mouseover() {
